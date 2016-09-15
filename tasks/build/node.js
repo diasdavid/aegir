@@ -6,7 +6,7 @@ const runSequence = require('run-sequence')
 const config = require('../../config/babel')
 
 module.exports = {
-  dep: ['clean:node'],
+  dep: [],
   fn (gulp, done) {
     gulp.task('copy::node', () => {
       return gulp.src('src/**/*')

@@ -30,7 +30,7 @@ module.exports = {
   fn (gulp, done) {
     const c = config
     c.output.filename = 'index.js'
-    c.output.path = path.resolve('dist')
+    c.output.path = path.resolve('build/js')
     c.devtool = 'source-map'
     c.debug = false
     c.plugins.push(
@@ -38,7 +38,7 @@ module.exports = {
     )
 
     webpack(c, webpackDone(() => {
-      gulp.src('dist/index.js')
+      gulp.src('build/js/app.js')
         .pipe($.uglify({
           mangle: false
         }))
@@ -46,7 +46,7 @@ module.exports = {
           suffix: '.min'
         }))
         .pipe($.size())
-        .pipe(gulp.dest('dist'))
+        .pipe(gulp.dest('build'))
         .once('end', done)
     }))
   }
